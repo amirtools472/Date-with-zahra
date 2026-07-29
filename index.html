@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Amir ❤️ Zahra</title>
+
+<style>
+
+body{
+margin:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#000,#900020);
+font-family:tahoma;
+overflow:hidden;
+}
+
+.box{
+background:#111;
+color:white;
+padding:35px;
+border-radius:25px;
+text-align:center;
+width:90%;
+max-width:400px;
+box-shadow:0 0 35px red;
+}
+
+.heart{
+font-size:60px;
+animation:pulse 1s infinite;
+}
+
+@keyframes pulse{
+50%{transform:scale(1.3);}
+}
+
+h1{
+color:#ff1744;
+}
+
+button{
+border:0;
+padding:15px 30px;
+border-radius:30px;
+font-size:18px;
+margin:10px;
+cursor:pointer;
+}
+
+.yes{
+background:#ff1744;
+color:white;
+}
+
+.no{
+background:#333;
+color:white;
+}
+
+#calendar{
+display:none;
+}
+
+input{
+padding:12px;
+border-radius:10px;
+font-size:16px;
+}
+
+#time,#final{
+color:#ff6688;
+font-weight:bold;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="box">
+
+<div class="heart">❤️</div>
+
+<h1>زهرا جان</h1>
+
+<h2 id="text">
+با من قرار میای؟ 😍
+</h2>
+
+
+<button class="yes" onclick="yesClick()">
+آره ❤️
+</button>
+
+
+<button class="no" onclick="noClick()">
+نه 😅
+</button>
+
+
+
+<div id="calendar">
+
+<h2>Good Girl ❤️</h2>
+
+<p id="time"></p>
+
+<p>
+حالا روز و ساعت قرارمون رو انتخاب کن 📅
+</p>
+
+
+<input type="datetime-local" id="date">
+
+
+<br>
+
+
+<button class="yes" onclick="saveDate()">
+ثبت قرار 💕
+</button>
+
+
+</div>
+
+
+<p id="final"></p>
+
+
+</div>
+
+
+
+<script>
+
+
+function noClick(){
+
+alert("تو حق انتخاب گزینه نه رو نداری 😄❤️");
+
+}
+
+
+
+function yesClick(){
+
+document.querySelector(".yes").style.display="none";
+
+document.querySelector(".no").style.display="none";
+
+
+document.getElementById("text").innerHTML=
+"Good Girl ❤️";
+
+
+document.getElementById("calendar").style.display="block";
+
+
+fireworks();
+
+}
+
+
+
+
+function updateTime(){
+
+let t=new Date().toLocaleTimeString("fa-IR",{
+
+timeZone:"Asia/Tehran",
+
+hour:"2-digit",
+minute:"2-digit",
+second:"2-digit"
+
+});
+
+
+document.getElementById("time").innerHTML=
+"🕒 ساعت ایران: "+t;
+
+}
+
+
+setInterval(updateTime,1000);
+
+updateTime();
+
+
+
+
+
+function fireworks(){
+
+for(let i=0;i<60;i++){
+
+let f=document.createElement("div");
+
+f.innerHTML="❤️";
+
+f.style.position="fixed";
+f.style.left=Math.random()*100+"%";
+f.style.top="-20px";
+f.style.fontSize="30px";
+f.style.transition="3s";
+
+document.body.appendChild(f);
+
+
+setTimeout(()=>{
+
+f.style.top="100%";
+
+},100);
+
+
+setTimeout(()=>{
+
+f.remove();
+
+},3000);
+
+}
+
+}
+
+
+
+
+
+function saveDate(){
+
+let d=document.getElementById("date").value;
+
+
+if(d==""){
+
+alert("اول زمان قرار رو انتخاب کن ❤️");
+
+return;
+
+}
+
+
+document.getElementById("final").innerHTML=
+
+"❤️ ثبت شد زهرا ❤️<br><br>"+
+"📅 قرار ما: "+d+
+"<br><br>امیر منتظرته 😍"+
+"<br><br>"+
+'<button class="yes" onclick="sendTelegram()">ارسال برای امیر در تلگرام 💙</button>';
+
+}
+
+
+
+
+function sendTelegram(){
+
+let date=document.getElementById("date").value;
+
+
+let message=
+
+"❤️ قرار ثبت شد ❤️\n\n"+
+"اسم: زهرا\n"+
+"📅 تاریخ و ساعت قرار: "+date+
+"\n\nمنتظرتم امیر 😍";
+
+
+let url=
+
+"https://t.me/Cyberko001?text="+
+encodeURIComponent(message);
+
+
+window.open(url,"_blank");
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>
